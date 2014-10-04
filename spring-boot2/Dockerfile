@@ -14,3 +14,5 @@ MAINTAINER itzg
 //WORKDIR /home/spring
 
 //CMD ["run", "app.groovy"]
+
+
