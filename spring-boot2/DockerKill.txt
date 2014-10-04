@@ -1,0 +1,19 @@
+
+echo "Killing any running containers..."
+docker ps -q | xargs -r docker kill
+
+echo "Deleting all containers..."
+docker ps -qa | xargs -r docker rm
+
+
+echo "Deleting all images..."
+function next_image() {
+  image="$(docker images -qa | head -n 1)"
+}
+next_image
+while [ -n "$image" ]; do
+  docker rmi "$image"
+  next_image
+done
+
+echo "Done."
